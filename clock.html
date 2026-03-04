@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Digital Clock
+        </title>
+        <style>
+            body {
+                margin:0;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background:linear-gradient(135deg, #667eea, #801fe1);
+                height:100vh;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                color:rgb(255, 255, 255)
+            }
+            .container {
+                text-align:center;
+            }
+            .clock {
+                font-size: 90px;
+                letter-spacing: 7px;
+                padding:10px 50px;
+                background-color: rgba(14, 13, 13, 0.4);
+                box-shadow: 0 4px 15px rgba(30, 26, 26, 0.3),0 6px 20px rgba(142, 45, 45, 0.2), inset 0 8px 25px rgba(0,0,0,0.1);
+            }
+            .message {
+                margin-top:20px;
+                font-size:25px;
+                color:rgb(30, 29, 29);
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="clock" id="clock">00:00:00</div>
+            <div class="message" id="msg">Welcome!</div>
+        </div>
+        <script>
+            function clock(){
+                let now=new Date();
+
+                let h=now.getHours();
+                let m=now.getMinutes();
+                let s=now.getSeconds();
+
+                if(m<10)m="0"+m;
+                if(s<10)s="0"+s;
+
+                document.getElementById("clock").innerHTML=h+":"+m+":"+s;
+
+            if(h<12){
+                document.getElementById("msg").innerHTML="This is Morning!";
+                document.body.style.background="linear-gradient(135deg, #f6d365, #fda085)";
+            }
+            else if(h<18){
+                document.getElementById("msg").innerHTML="This is Afternoon!";
+                document.body.style.background="linear-gradient(135deg, #fbc2eb, #a6c1ee)";
+            }
+            else{
+                document.getElementById("msg").innerHTML="This is Evening!";
+                document.body.style.background="linear-gradient(135deg, #667eea, #764ba2)";
+            }
+            }
+            setInterval(clock,1000);
+        </script>
+    </body>
+</html>
